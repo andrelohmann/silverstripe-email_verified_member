@@ -1,0 +1,17 @@
+de:
+  EmailVerifiedMember:
+    BUTTONRESENDEMAIL: 'Ich habe meine verifikations Email verloren'
+    ERRORNOTEMAILVERIFIED: 'Bitte verifiziere Deine Emailadresse bevor Du Dich einloggst.'
+    EMAILVERIFY: 'Bitte verifiziere Deine Emailadresse indem Du auf den Link in der Email klickst bevor Du Dich einloggst.'
+    CONFIRMEMAILSUBJECT: 'Bitte verifiziere Deine Emailadresse für %s'
+    EMAILSENTHEADER: 'Verifizierungs Email an ''%s'' versandt.'
+    EMAILSENTTEXT: 'Danke! Eine verifikations Email wurde an ''%s'' versandt.'
+    VERIFYEMAILHEADER: 'Emailadresse verifizieren'
+    VERIFYBEFORELOGON: 'Bevor Du Dich einloggen kannst, musst Du den Link in der verifikations Email klicken.'
+    USEFORMBELOW: 'Benutze das Formular, wenn Du den verifikations Link erneut zugesandt bekommen möchtest.'
+    BUTTONSEND: 'Schicken Sie mir den verifikations Link erneut'
+    VERIFYEMAILHEADER: 'Verifikations Link'
+    ACCOUNTVERIFIEDTITLE: 'Benutzerkonto verifiziert'
+    ACCOUNTVERIFIED: 'Danke %s! Dein Benutzerkonto wurde verifiziert. Du kannst Dich jetzt einloggen.'
+    ACCOUNTVERIFIEDFAILTITLE: 'Verifizierung der Emailadresse fehlgeschlagen.'
+    ACCOUNTVERIFIEDFAIL: 'Die Verifizierung der Emailadresse ist fehlgeschlagen, entweder ist die Emailadresse unbekannt oder der verifikations Link ist ungültig. Bitte stelle sicher, dass Du den ganzen Link kopiert hast.'

@@ -1,0 +1,17 @@
+en:
+  EmailVerifiedMember:
+    BUTTONRESENDEMAIL: 'I''ve lost my verification email'
+    ERRORNOTEMAILVERIFIED: 'Please verify your email address before login.'
+    EMAILVERIFY: 'Please verify your email address by clicking on the link in the email before logging in.'
+    CONFIRMEMAILSUBJECT: 'Please confirm your email address with %s'
+    EMAILSENTHEADER: 'Verify Email link sent to ''%s'''
+    EMAILSENTTEXT: 'Thank you! A verify email link has been sent to ''%s'', provided an account exists for this email address.'
+    VERIFYEMAILHEADER: 'Verify your email'
+    VERIFYBEFORELOGON: 'You need to verify the link in the email we sent you before you can log on.'
+    USEFORMBELOW: 'Use the form below if you would like us to resend the link.'
+    BUTTONSEND: 'Send me the verify email link again'
+    VERIFYEMAILHEADER: 'Verification link'
+    ACCOUNTVERIFIEDTITLE: 'Member account verified'
+    ACCOUNTVERIFIED: 'Thank you %s! Your account has been verified, you can now login to the website.'
+    ACCOUNTVERIFIEDFAILTITLE: 'Member email address verification failed'
+    ACCOUNTVERIFIEDFAIL: 'Member email address verification failed, either unknown email address or invalid verification string. Please ensure you copy and pasted the entire link.'
