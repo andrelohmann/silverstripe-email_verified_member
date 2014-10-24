@@ -83,7 +83,7 @@ class EmailVerifiedMemberLoginForm extends MemberLoginForm {
 			$fields->push(new HiddenField('BackURL', 'BackURL', $backURL));
 		}
 
-		parent::__construct($controller, $name, $fields, $actions, $checkCurrentUser = true);
+		parent::__construct($controller, $name, $fields, $actions, $checkCurrentUser = false);
 
 		// Focus on the email input when the page is loaded
 		Requirements::customScript(<<<JS
