@@ -9,7 +9,7 @@ de:
     VERIFYEMAILHEADER: 'Emailadresse verifizieren'
     VERIFYBEFORELOGON: 'Bevor Du Dich einloggen kannst, musst Du den Link in der verifikations Email klicken.'
     USEFORMBELOW: 'Benutze das Formular, wenn Du den verifikations Link erneut zugesandt bekommen möchtest.'
-    BUTTONSEND: 'Schicken Sie mir den verifikations Link erneut'
+    BUTTONSEND: 'Schicke mir mir den verifikations Link erneut'
     VERIFYEMAILHEADER: 'Verifikations Link'
     ACCOUNTVERIFIEDTITLE: 'Benutzerkonto verifiziert'
     ACCOUNTVERIFIED: 'Danke %s! Dein Benutzerkonto wurde verifiziert. Du kannst Dich jetzt einloggen.'
