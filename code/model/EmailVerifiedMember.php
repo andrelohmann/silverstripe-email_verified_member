@@ -141,7 +141,7 @@ class EmailVerifiedMember extends DataExtension {
 	}
 	if (!$this->owner->Verified) {
             if ((!$this->owner->VerificationEmailSent)) {
-                if(!EmailVerifiedMember::get_deactivate_send_validation_mail()){
+                if(!EmailVerifiedMember::get_deactivate_send_validation_mail() && Security::default_admin_username() != $this->owner->Email){
                     $this->owner->sendemail($this->owner, false);
                 }
             }
