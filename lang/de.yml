@@ -3,7 +3,7 @@ de:
     BUTTONRESENDEMAIL: 'Ich habe meine verifikations Email verloren'
     ERRORNOTEMAILVERIFIED: 'Bitte verifiziere Deine Emailadresse bevor Du Dich einloggst.'
     EMAILVERIFY: 'Bitte verifiziere Deine Emailadresse indem Du auf den Link in der Email klickst bevor Du Dich einloggst.'
-    CONFIRMEMAILSUBJECT: 'Bitte verifiziere Deine Emailadresse für %s'
+    CONFIRMEMAILSUBJECT: 'Bitte verifiziere Deine Emailadresse'
     EMAILSENTHEADER: 'Verifizierungs Email an ''%s'' versandt.'
     EMAILSENTTEXT: 'Danke! Eine verifikations Email wurde an ''%s'' versandt.'
     VERIFYEMAILHEADER: 'Emailadresse verifizieren'

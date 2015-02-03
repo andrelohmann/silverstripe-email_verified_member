@@ -17,7 +17,7 @@
 
 		<p>$Member.Name,</p>
 
-		<p><%t EmailVerifiedMember.CONFIRMEMAILSUBJECT "EmailVerifiedMember.CONFIRMEMAILSUBJECT" %>$BaseHref.</p>
+		<p><%t EmailVerifiedMember.CONFIRMEMAILSUBJECT "EmailVerifiedMember.CONFIRMEMAILSUBJECT" %> $BaseHref.</p>
 
                 <p><a href="$ValidationLink">$ValidationLink</a></p>
 	</body>

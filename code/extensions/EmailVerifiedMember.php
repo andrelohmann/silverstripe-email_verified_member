@@ -188,7 +188,6 @@ class EmailVerifiedMember extends DataExtension {
      */
     public function sendemail($member, $write = true) {
         if($member->Email){
-            $config = SiteConfig::current_site_config();
 
             if(EmailVerifiedMember::get_validation_domain()) $ValidationLink = EmailVerifiedMember::get_validation_domain().'/Security/validate/' . urlencode($member->Email) . '/' . $member->VerificationString;
             else $ValidationLink = Director::absoluteBaseURL().'Security/validate/'.urlencode($member->Email).'/'.$member->VerificationString;
@@ -196,7 +195,7 @@ class EmailVerifiedMember extends DataExtension {
             $email = new Email();
             $email->setTemplate('VerificationEmail');
             $email->setTo($member->Email);
-            $email->setSubject(sprintf(_t('EmailVerifiedMember.CONFIRMEMAILSUBJECT', 'Please confirm your email address with %s'), $config->Title));
+            $email->setSubject(_t('EmailVerifiedMember.CONFIRMEMAILSUBJECT', 'Please confirm your email address'));
             $email->populateTemplate(array(
                 'ValidationLink' => $ValidationLink,
                 'Member' => $member,

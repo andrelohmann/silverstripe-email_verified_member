@@ -3,7 +3,7 @@ en:
     BUTTONRESENDEMAIL: 'I''ve lost my verification email'
     ERRORNOTEMAILVERIFIED: 'Please verify your email address before login.'
     EMAILVERIFY: 'Please verify your email address by clicking on the link in the email before logging in.'
-    CONFIRMEMAILSUBJECT: 'Please confirm your email address with %s'
+    CONFIRMEMAILSUBJECT: 'Please confirm your email address'
     EMAILSENTHEADER: 'Verify Email link sent to ''%s'''
     EMAILSENTTEXT: 'Thank you! A verify email link has been sent to ''%s'', provided an account exists for this email address.'
     VERIFYEMAILHEADER: 'Verify your email'

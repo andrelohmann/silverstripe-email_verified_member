@@ -17,10 +17,17 @@ Authenticator::unregister('MemberAuthenticator');
 Security::add_extension('EmailVerifiedSecurity');
 
 // Add Default Records
-Page::add_extension('EmailVerifiedMemberDefaultRecords');
+DataObject::add_extension('EmailVerifiedMemberDefaultRecords');
 
-// ContentController enthält Methode LoginForm()
-// Diese muss im Page_Controller überschrieben werden
-//public function LoginForm() {
-//  return EmailVerifiedMemberAuthenticator::get_login_form($this);
-//}
+// Validation Domain for the Email validation Link
+EmailVerifiedMember::set_validation_domain(EMAILVERIFIEDMEMBER_VALIDATION_DOMAIN);
+EmailVerifiedMember::set_login_after_validation(EMAILVERIFIEDMEMBER_LOGIN_AFTER_VALIDATION);
+// Add all new Users to the Frontend Group
+EmailVerifiedMember::set_default_add_to_frontend_group(EMAILVERIFIEDMEMBER_ADD_TO_FRONTEND_GROUP);
+// Set the redirect destination Path to use after verification of email was successfull
+EmailVerifiedSecurity::set_default_verified_dest(EMAILVERIFIEDMEMBER_DEFAULT_VERIFIED_DESTINATION);
+
+if(!class_exists('BootstrapNavbarLoginForm')){
+    BootstrapNavbarLoginForm::set_AuthenticatorClass("EmailVerifiedMemberAuthenticator");
+    BootstrapNavbarLoginForm::set_LoginFormClass("EmailVerifiedMemberLoginForm");
+}

@@ -34,21 +34,14 @@ class EmailVerifiedSecurity extends Extension {
         
         $email = Convert::raw2xml($request->param('ID') . '.' . $request->getExtension());
 
-    	$tmpPage = new Page();
-    	$tmpPage->Title = sprintf(_t('EmailVerifiedMember.EMAILSENTHEADER', "Verify Email link sent to '%s'"), $email);
-    	$tmpPage->URLSegment = 'Security';
-    	$tmpPage->ID = -1; // Set the page ID to -1 so we dont get the top level pages as its children
-    	$controller = new Page_Controller($tmpPage);
-    	$controller->init();
-		
-    	$customisedController = $controller->customise(array(
+    	return $this->owner->customise(new ArrayData(array(
+            'Title' => sprintf(_t('EmailVerifiedMember.EMAILSENTHEADER', "Verify Email link sent to '%s'"), $email),
             'Content' =>
                 "<p>" .
 		sprintf(_t('EmailVerifiedMember.EMAILSENTTEXT', "Thank you! A verify email link has been sent to  '%s', provided an account exists for this email address."), $email) .
 		"</p>",
             'Email' => $email
-	));
-	return $customisedController->renderWith(array('Security_emailsent', 'Security', $this->owner->stat('template_main'), 'BlankPage'));
+	)))->renderWith(array('Security_emailsent', 'Security', $this->owner->stat('template_main'), 'BlankPage'));
     }
     
     /**
@@ -58,22 +51,13 @@ class EmailVerifiedSecurity extends Extension {
      */
     public function verifyemail() {
 
-	$tmpPage = new Page();
-        $tmpPage->Title = _t('EmailVerifiedMember.VERIFYEMAILHEADER', 'Verify your email');
-	$tmpPage->URLSegment = 'Security';
-	$tmpPage->ID = -1; // Set the page ID to -1 so we dont get the top level pages as its children
-	$controller = new Page_Controller($tmpPage);
-	$controller->init();
-
-	$customisedController = $controller->customise(array(
+	return $this->owner->customise(new ArrayData(array(
+            'Title' => _t('EmailVerifiedMember.VERIFYEMAILHEADER', 'Verify your email'),
             'Content' =>
                 '<p>' . _t('EmailVerifiedMember.VERIFYBEFORELOGON','You need to verify the link in the email we sent you before you can log on.') . '</p>' .
 		'<p>' . _t('EmailVerifiedMember.USEFORMBELOW','Use the form below if you would like us to resend the link.') . '</p>',
             'Form' => $this->owner->VerifyEmailForm(),
-	));
-        
-        //Controller::$currentController = $controller;
-	return $customisedController->renderWith(array('Security_verifyemail', 'Security', $this->owner->stat('template_main'), 'BlankPage'));
+	)))->renderWith(array('Security_verifyemail', 'Security', $this->owner->stat('template_main'), 'BlankPage'));
     }
     
     /**
@@ -106,13 +90,8 @@ class EmailVerifiedSecurity extends Extension {
      */
     public function validate($request) {
         
-        $tmpPage = new Page();
-	$tmpPage->Title = _t('EmailVerifiedMember.VERIFYEMAILHEADER', 'Verification link');
-	$tmpPage->URLSegment = 'Security';
-	$tmpPage->ID = -1; // Set the page ID to -1 so we dont get the top level pages as its children
-	$controller = new Page_Controller($tmpPage);
-	$controller->init();
-        
+        $Title = _t('EmailVerifiedMember.VERIFYEMAILHEADER', 'Verification link');
+	
         if($request && $member = DataObject::get_one('Member', "\"Email\" = '".Convert::raw2sql($request->param('ID'))."'")){
             if ($member->VerificationString == Convert::raw2sql($request->param('OtherID'))){
                 
@@ -123,25 +102,25 @@ class EmailVerifiedSecurity extends Extension {
 
                 // Redirect to custom destination after verification succeded
                 if(EmailVerifiedSecurity::get_default_verified_dest()) return $this->owner->redirect(EmailVerifiedSecurity::get_default_verified_dest());
-                $tmpPage->Title.= " - "._t('EmailVerifiedMember.ACCOUNTVERIFIEDTITLE', "Member account verified");
-                $customisedController = $controller->customise(array(
+                $Title.= " - "._t('EmailVerifiedMember.ACCOUNTVERIFIEDTITLE', "Member account verified");
+                return $this->owner->customise(new ArrayData(array(
+                    'Title' => $Title,
                     'Content' =>
                         "<p>" .
                         sprintf(_t('EmailVerifiedMember.ACCOUNTVERIFIED', "Thank you %s! Your account has been verified, you can now login to the website."), $member->Name) .
                         "</p>"
-                ));
-                return $customisedController->renderWith(array('Security_validationsuccess', 'Security', $this->owner->stat('template_main'), 'BlankPage'));
+                )))->renderWith(array('Security_validationsuccess', 'Security', $this->owner->stat('template_main'), 'BlankPage'));
             }
         }
         
         // Verification failed
-        $tmpPage->Title.= " - "._t('EmailVerifiedMember.ACCOUNTVERIFIEDFAILTITLE', "Member email address verification failed");
-        $customisedController = $controller->customise(array(
+        $Title.= " - "._t('EmailVerifiedMember.ACCOUNTVERIFIEDFAILTITLE', "Member email address verification failed");
+        return $this->owner->customise(new ArrayData(array(
+            'Title' => $Title,
             'Content' =>
                 "<p>" .
                 _t('EmailVerifiedMember.ACCOUNTVERIFIEDFAIL', "Member email address verification failed, either unknown email address or invalid verification string. Please ensure you copy and pasted the entire link.") .
                 "</p>"
-        ));
-        return $customisedController->renderWith(array('Security_validationfail', 'Security', $this->owner->stat('template_main'), 'BlankPage'));
+        )))->renderWith(array('Security_validationfail', 'Security', $this->owner->stat('template_main'), 'BlankPage'));
     }
 }
