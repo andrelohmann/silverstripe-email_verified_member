@@ -41,7 +41,7 @@ class EmailVerifiedSecurity extends Extension {
 		sprintf(_t('EmailVerifiedMember.EMAILSENTTEXT', "Thank you! A verify email link has been sent to  '%s', provided an account exists for this email address."), $email) .
 		"</p>",
             'Email' => $email
-	)))->renderWith(array('Security_emailsent', 'Security', $this->owner->stat('template_main'), 'BlankPage'));
+	)))->renderWith(array('Security_emailsent', 'Security', $this->owner->stat('template_main'), $this->owner->stat('template')));
     }
     
     /**
@@ -57,7 +57,7 @@ class EmailVerifiedSecurity extends Extension {
                 '<p>' . _t('EmailVerifiedMember.VERIFYBEFORELOGON','You need to verify the link in the email we sent you before you can log on.') . '</p>' .
 		'<p>' . _t('EmailVerifiedMember.USEFORMBELOW','Use the form below if you would like us to resend the link.') . '</p>',
             'Form' => $this->owner->VerifyEmailForm(),
-	)))->renderWith(array('Security_verifyemail', 'Security', $this->owner->stat('template_main'), 'BlankPage'));
+	)))->renderWith(array('Security_verifyemail', 'Security', $this->owner->stat('template_main'), $this->owner->stat('template')));
     }
     
     /**
@@ -109,7 +109,7 @@ class EmailVerifiedSecurity extends Extension {
                         "<p>" .
                         sprintf(_t('EmailVerifiedMember.ACCOUNTVERIFIED', "Thank you %s! Your account has been verified, you can now login to the website."), $member->Name) .
                         "</p>"
-                )))->renderWith(array('Security_validationsuccess', 'Security', $this->owner->stat('template_main'), 'BlankPage'));
+                )))->renderWith(array('Security_validationsuccess', 'Security', $this->owner->stat('template_main'), $this->owner->stat('template')));
             }
         }
         
@@ -121,6 +121,6 @@ class EmailVerifiedSecurity extends Extension {
                 "<p>" .
                 _t('EmailVerifiedMember.ACCOUNTVERIFIEDFAIL', "Member email address verification failed, either unknown email address or invalid verification string. Please ensure you copy and pasted the entire link.") .
                 "</p>"
-        )))->renderWith(array('Security_validationfail', 'Security', $this->owner->stat('template_main'), 'BlankPage'));
+        )))->renderWith(array('Security_validationfail', 'Security', $this->owner->stat('template_main'), $this->owner->stat('template')));
     }
 }
