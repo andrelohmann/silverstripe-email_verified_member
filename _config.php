@@ -27,7 +27,7 @@ EmailVerifiedMember::set_default_add_to_frontend_group(EMAILVERIFIEDMEMBER_ADD_T
 // Set the redirect destination Path to use after verification of email was successfull
 EmailVerifiedSecurity::set_default_verified_dest(EMAILVERIFIEDMEMBER_DEFAULT_VERIFIED_DESTINATION);
 
-if(!class_exists('BootstrapNavbarLoginForm')){
+if(class_exists('BootstrapNavbarLoginForm')){
     BootstrapNavbarLoginForm::set_AuthenticatorClass("EmailVerifiedMemberAuthenticator");
     BootstrapNavbarLoginForm::set_LoginFormClass("EmailVerifiedMemberLoginForm");
 }
