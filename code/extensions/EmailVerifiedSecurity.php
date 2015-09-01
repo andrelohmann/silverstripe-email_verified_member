@@ -98,7 +98,7 @@ class EmailVerifiedSecurity extends Extension {
                 $member->Verified = true;
                 $member->write();
                 
-                if(EmailVerifiedMember::get_login_after_validation()) $member->logIn();
+                if(Config::inst()->get('Member', 'login_after_validation')) $member->logIn();
 
                 // Redirect to custom destination after verification succeded
                 if(EmailVerifiedSecurity::get_default_verified_dest()) return $this->owner->redirect(EmailVerifiedSecurity::get_default_verified_dest());

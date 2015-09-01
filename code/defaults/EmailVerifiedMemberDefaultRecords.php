@@ -15,14 +15,14 @@ class EmailVerifiedMemberDefaultRecords extends DataExtension{
         parent::requireDefaultRecords();
     
         // Add default FrontendMember group if none with permission code ADMIN exists
-        $frontendGroup = Permission::get_groups_by_permission(EmailVerifiedMember::get_frontend_group_permission());
-	if(!defined('CreateFrontendGroupOnce') && !$frontendGroup->count()){
+        $frontendGroup = Permission::get_groups_by_permission(Config::inst()->get('Member', 'frontend_group_permission'));
+		if(!defined('CreateFrontendGroupOnce') && !$frontendGroup->count()){
             define('CreateFrontendGroupOnce', true);
             $frontendGroup = new Group();
-            $frontendGroup->Code = EmailVerifiedMember::get_frontend_group_code();
-            $frontendGroup->Title = EmailVerifiedMember::get_frontend_group_title();
+            $frontendGroup->Code = Config::inst()->get('Member', 'frontend_group_code');
+            $frontendGroup->Title = Config::inst()->get('Member', 'frontend_group_title');
             $frontendGroup->write();
-            Permission::grant( $frontendGroup->ID, EmailVerifiedMember::get_frontend_group_permission());
+            Permission::grant( $frontendGroup->ID, Config::inst()->get('Member', 'frontend_group_permission'));
             DB::alteration_message('Frontend Members group created',"created");
         }
         
@@ -30,14 +30,14 @@ class EmailVerifiedMemberDefaultRecords extends DataExtension{
         // If-Block darf nur einmal durchlaufen werden
         if (!defined('VerifyAdminOnce')){
             define('VerifyAdminOnce', true);
-            EmailVerifiedMember::set_deactivate_send_validation_mail(true);
+            Config::inst()->update('Member', 'deactivate_send_validation_mail', true);
             $Admin = Security::findAnAdministrator();
-            EmailVerifiedMember::set_deactivate_send_validation_mail(false);
+            Config::inst()->update('Member', 'deactivate_send_validation_mail', false);
             $Admin->Verified = true;
             $Admin->VerificationEmailSent = true;
-            EmailVerifiedMember::set_deactivate_send_validation_mail(true);
+            Config::inst()->update('Member', 'deactivate_send_validation_mail', true);
             $Admin->write();
-            EmailVerifiedMember::set_deactivate_send_validation_mail(false);
+            Config::inst()->update('Member', 'deactivate_send_validation_mail', false);
             DB::alteration_message('Admin email verified', 'created');
         }
     }
